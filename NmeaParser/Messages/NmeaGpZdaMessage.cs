@@ -14,7 +14,7 @@ public record NmeaGpZdaMessage : NmeaMessage
             throw new ArgumentException("Invalid GPZDA message");
 
         var timeOnly = NmeaExtensions.ToTimeOnly(messageParts[1]);
-        var dateOnly = NmeaExtensions.ToDateOnly(messageParts[1], messageParts[2], messageParts[3]);
+        var dateOnly = NmeaExtensions.ToDateOnly(messageParts[2], messageParts[3], messageParts[4]);
 
         Utc = dateOnly.ToDateTime(timeOnly, DateTimeKind.Utc);
         Message = string.Join(',', messageParts);
